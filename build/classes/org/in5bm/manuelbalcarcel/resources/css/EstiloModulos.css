@@ -1,0 +1,25 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 18, 2022, 10:34:40 AM
+    Author     : informatica
+*/
+
+#panel-navegacion {
+    -fx-background-color:  #4990e2;
+}
+
+#etiqueta-panel{
+    -fx-background-color:  #172D47;
+        -fx-background-radius: 0 0 60 60;
+}
+
+.botones-crud{
+    -fx-background-color: #4990e2;
+}
+.botones-crud:hover{ 
+    -fx-background-color: #C4AC2C;
+     -fx-background-radius: 10 20 10 20;
+}

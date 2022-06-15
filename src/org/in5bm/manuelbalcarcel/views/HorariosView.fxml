@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="1133.0" style="-fx-background-color: #ffff;" stylesheets="@../resources/css/EstiloModulos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.in5bm.manuelbalcarcel.controllers.HorariosController">
+   <children>
+      <BorderPane layoutX="-1.0" prefHeight="610.0" prefWidth="1133.0">
+         <left>
+            <Pane id="panel-navegacion" prefHeight="610.0" prefWidth="217.0" stylesheets="@../resources/css/EstiloModulos.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane id="etiqueta-panel" layoutX="25.0" prefHeight="221.0" prefWidth="167.0">
+                     <children>
+                        <Label layoutX="30.0" layoutY="16.0" prefHeight="52.0" prefWidth="110.0" text="Horarios" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <ImageView fitHeight="119.0" fitWidth="125.0" layoutX="25.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/image/zyro-image%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <VBox alignment="CENTER_RIGHT" layoutX="3.0" layoutY="223.0" prefHeight="387.0" prefWidth="211.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="170.0">
+                           <children>
+                              <Button fx:id="btnNuevo" alignment="CENTER" mnemonicParsing="false" onAction="#nuevoIngreso" prefHeight="83.0" prefWidth="235.0" styleClass="botones-crud" text="Nuevo" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic Bold" size="26.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fx:id="imgNuevo" fitHeight="68.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/image/image%20(2).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="71.0" prefWidth="170.0">
+                           <children>
+                              <Button fx:id="btnModificar" alignment="CENTER" mnemonicParsing="false" onAction="#clicModificar" prefHeight="79.0" prefWidth="231.0" styleClass="botones-crud" text="Modificar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic Bold" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fx:id="imgModificar" fitHeight="68.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/image/image%20(3).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="81.0" prefHeight="71.0" prefWidth="170.0">
+                           <children>
+                              <Button fx:id="btnEliminar" alignment="CENTER" mnemonicParsing="false" onAction="#clicEliminar" prefHeight="84.0" prefWidth="220.0" styleClass="botones-crud" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic Bold" size="23.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fx:id="imgEliminar" fitHeight="68.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/image/image%20(4).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="152.0" prefHeight="71.0" prefWidth="170.0">
+                           <children>
+                              <Button fx:id="btnReporte" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarAlertInfo" prefHeight="81.0" prefWidth="241.0" styleClass="botones-crud" text="Reporte" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic Bold" size="23.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="68.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/image/image%20(5).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="610.0" prefWidth="859.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="tblHorarios" layoutX="14.0" layoutY="243.0" onMouseClicked="#seleccionarElemento" prefHeight="327.0" prefWidth="880.0">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="68.0" text="ID" />
+                      <TableColumn fx:id="colHoraInicio" prefWidth="147.0" text="Hora de Inicio" />
+                        <TableColumn fx:id="colHoraFInal" prefWidth="110.0" text="Hora de salida" />
+                        <TableColumn fx:id="colLunes" prefWidth="110.0" text="lunes" />
+                        <TableColumn fx:id="colMartes" prefWidth="110.0" text="martes" />
+                        <TableColumn fx:id="colMiercoles" prefWidth="110.0" text="miercoles" />
+                        <TableColumn fx:id="colJueves" prefWidth="110.0" text="jueves" />
+                        <TableColumn fx:id="colViernes" prefWidth="110.0" text="viernes" />
+                    </columns>
+                  </TableView>
+                  <ImageView fitHeight="82.0" fitWidth="326.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../resources/image/fundacion-kinal-2048x739-removebg-preview%20(2).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="54.0" layoutX="814.0" layoutY="20.0" onMouseClicked="#clicregresar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/image/image%20(13).png" />
+                     </image>
+                  </ImageView>
+                  <GridPane layoutX="26.0" layoutY="191.0" prefHeight="30.0" prefWidth="800.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <CheckBox fx:id="ckbLunes" mnemonicParsing="false" prefHeight="50.0" prefWidth="93.0" text="Lunes">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="ckbMartes" mnemonicParsing="false" prefHeight="50.0" prefWidth="93.0" text="Martes" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="ckbMiercoles" mnemonicParsing="false" prefHeight="50.0" prefWidth="116.0" text="Miercoles" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="ckbJueves" mnemonicParsing="false" prefHeight="50.0" prefWidth="93.0" text="Jueves" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="ckbViernes" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" text="Viernes" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="381.0" layoutY="81.0" prefHeight="74.0" prefWidth="410.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Hora de Inicio">
+                           <font>
+                              <Font name="Cambria" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="30.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXTimePicker fx:id="tpkHoraInicio" prefHeight="28.0" prefWidth="185.0" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </JFXTimePicker>
+                        <Label text="Hora de final" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Cambria" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXTimePicker fx:id="tpkHoraFinal" prefHeight="35.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin>
+                        </JFXTimePicker>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="67.0" layoutY="116.0" prefHeight="60.0" prefWidth="267.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0" minWidth="10.0" prefWidth="215.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="txtId" prefHeight="25.0" prefWidth="204.0" GridPane.rowIndex="1" />
+                        <Label prefHeight="22.0" prefWidth="138.0" text="ID del Horario">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

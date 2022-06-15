@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.in5bm.manuelbalcarcel.bean.db"},{"l":"org.in5bm.manuelbalcarcel.controllers"},{"l":"org.in5bm.manuelbalcarcel.models"},{"l":"org.in5bm.manuelbalcarcel.system"}]

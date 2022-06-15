@@ -1,0 +1,17 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+
+
+.botones-menu {
+    -fx-background-color :  #4990e2;
+}
+
+.botones-menu:hover{
+    -fx-background-size : 200 200;
+    -fx-background-color : #C4AC2C;
+         -fx-background-radius: 10 25 10 25;
+}
+
+

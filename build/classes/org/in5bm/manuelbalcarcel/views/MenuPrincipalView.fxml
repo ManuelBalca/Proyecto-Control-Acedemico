@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="1068.0" style="-fx-background-color: #4990e2;" stylesheets="@../resources/css/EstiloMenuPrincipal.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.in5bm.manuelbalcarcel.controllers.MenuPrincipalController">
+   <children>
+      <HBox alignment="CENTER" layoutX="124.0" layoutY="110.0" prefHeight="104.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="109.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(1).png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#clicAlumno" prefHeight="98.0" prefWidth="137.0" styleClass="botones-menu" text="Alumnos" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <MenuBar id="menu-bar" layoutX="66.0" layoutY="23.0" prefHeight="29.0" prefWidth="103.0" style="-fx-background-radius: 10 10 10 10;" stylesheets="@../resources/css/EstiloMenuPrincipal.css">
+        <menus>
+          <Menu text="Modulos">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Alumnos" />
+                  <MenuItem mnemonicParsing="false" text="Instructores" />
+                  <MenuItem mnemonicParsing="false" text="Carrera Tecnica" />
+                  <MenuItem mnemonicParsing="false" text="Horarios" />
+                  <MenuItem mnemonicParsing="false" text="Asignacion alumnos" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="?">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Acerca de..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="193.0" fitWidth="1067.0" layoutX="1.0" layoutY="447.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../resources/image/image%20(6).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="205.0" fitWidth="1067.0" layoutX="-1.0" layoutY="-40.0" pickOnBounds="true" rotate="180.0" smooth="false">
+         <image>
+            <Image url="@../resources/image/image%20(6).png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="118.0" layoutY="227.0" prefHeight="104.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="109.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/zyro-image%20(1).png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#clicHorarios" prefHeight="104.0" prefWidth="124.0" styleClass="botones-menu" stylesheets="@../resources/css/EstiloMenuPrincipal.css" text="Horario" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="474.0" layoutY="109.0" prefHeight="104.0" prefWidth="344.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="109.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(9).png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="169.0" styleClass="botones-menu" text="Instructores" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="474.0" layoutY="227.0" prefHeight="104.0" prefWidth="382.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="109.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(10).png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#clicCarreras" prefHeight="96.0" prefWidth="209.0" styleClass="botones-menu" text="Carrera Tecnica" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="124.0" layoutY="343.0" prefHeight="104.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="109.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(11).png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#clicSalones" prefHeight="101.0" prefWidth="135.0" styleClass="botones-menu" text="Salones" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <ImageView fitHeight="53.0" fitWidth="56.0" layoutX="993.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/image/image%20(12).png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="467.0" layoutY="343.0" prefHeight="104.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="108.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/cursos.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#clicCursos" prefHeight="101.0" prefWidth="135.0" styleClass="botones-menu" text="Cursos" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <ImageView fitHeight="298.0" fitWidth="275.0" layoutX="787.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/image/zyro-image-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
