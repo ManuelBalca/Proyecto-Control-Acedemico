@@ -31,18 +31,9 @@ import org.in5bm.manuelbalcarcel.bean.db.Conection;
 import org.in5bm.manuelbalcarcel.models.Instructores;
 import org.in5bm.manuelbalcarcel.system.Principal;
 
-/**
- *
- * @author Luis Carlos Pérez
- * @date 11/06/2022
- * @time 18:52:44
- *
- * Código técnico: IN5BM
- *
- */
 public class InstructoresController implements Initializable {
 
-    private final String PAQUETE_IMAGE = "src/org/in5bm/manuelbalcarcel/resources/image";
+    private final String PAQUETE_IMAGE = "org/in5bm/manuelbalcarcel/resources/image/";
     private final String TITULO_ALERT = "Control Académico Kinal";
     private final String TIPO_ALERT_WARNING = "warning";
     private final String TIPO_ALERT_INFORMATION = "information";
@@ -302,7 +293,7 @@ public class InstructoresController implements Initializable {
     }
 
     @FXML
-    void clicNuevo() {
+    void nuevoIngreso() {
         switch (operacion) {
             case NINGUNO:
                 if (existeElementoSeleccionado()) {
@@ -317,17 +308,14 @@ public class InstructoresController implements Initializable {
 
                 btnNuevo.setText("Guardar");
                 btnModificar.setText("Cancelar");
-                imgNuevo.setImage(new Image(PAQUETE_IMAGE + "Guardar.png"));
-                imgModificar.setImage(new Image(PAQUETE_IMAGE + "Cancelar.png"));
+                imgNuevo.setImage(new Image(PAQUETE_IMAGE + "image.png"));
+                imgModificar.setImage(new Image(PAQUETE_IMAGE + "cancel.png"));
 
                 btnEliminar.setVisible(false);
                 btnReporte.setVisible(false);
                 btnEliminar.setDisable(true);
                 btnReporte.setDisable(true);
-                imgReporte.setVisible(false);
-                imgReporte.setDisable(true);
-                imgEliminar.setVisible(false);
-                imgEliminar.setDisable(true);
+              
 
                 operacion = Operacion.GUARDAR;
                 break;
@@ -342,15 +330,15 @@ public class InstructoresController implements Initializable {
 
                         btnNuevo.setText("Nuevo");
                         btnModificar.setText("Modificar");
-                        imgNuevo.setImage(new Image(PAQUETE_IMAGE + "Agregar.png"));
-                        imgModificar.setImage(new Image(PAQUETE_IMAGE + "Editar.png"));
+                        imgNuevo.setImage(new Image(PAQUETE_IMAGE + "image (2).png"));
+                        imgModificar.setImage(new Image(PAQUETE_IMAGE + "image (3).png"));
 
                         btnEliminar.setVisible(true);
                         btnEliminar.setDisable(false);
-                        imgEliminar.setVisible(true);
+                       
                         btnReporte.setVisible(true);
                         btnReporte.setDisable(false);
-                        imgReporte.setVisible(true);
+                       
 
                         operacion = Operacion.NINGUNO;
                     }
@@ -444,7 +432,7 @@ public class InstructoresController implements Initializable {
                 alert2.setTitle(TITULO_ALERT);
                 alert2.setContentText(alertContent);
                 Stage stageAlert2 = (Stage) alert2.getDialogPane().getScene().getWindow();
-                stageAlert2.getIcons().add(new Image(PAQUETE_IMAGE + "informacion.png"));
+                stageAlert2.getIcons().add(new Image(PAQUETE_IMAGE + "IconoAlert01 (2).png"));
                 alert2.show();
                 break;
         }
@@ -460,15 +448,13 @@ public class InstructoresController implements Initializable {
 
                     btnNuevo.setVisible(false);
                     btnNuevo.setDisable(true);
-                    imgNuevo.setVisible(false);
                     btnReporte.setVisible(false);
                     btnReporte.setDisable(true);
-                    imgReporte.setVisible(false);
 
                     btnModificar.setText("Guardar");
                     btnEliminar.setText("Cancelar");
-                    imgEliminar.setImage(new Image(PAQUETE_IMAGE + "Cancelar.png"));
-                    imgModificar.setImage(new Image(PAQUETE_IMAGE + "Guardar.png"));
+                    imgEliminar.setImage(new Image(PAQUETE_IMAGE + "cancel.png"));
+                    imgModificar.setImage(new Image(PAQUETE_IMAGE + "image.png"));
 
                     operacion = Operacion.MODIFICAR;
                 } else {
@@ -483,15 +469,15 @@ public class InstructoresController implements Initializable {
 
                 btnNuevo.setText("Nuevo");
                 btnModificar.setText("Modificar");
-                imgNuevo.setImage(new Image(PAQUETE_IMAGE + "Agregar.png"));
-                imgModificar.setImage(new Image(PAQUETE_IMAGE + "Editar.png"));
+                imgNuevo.setImage(new Image(PAQUETE_IMAGE + "image (2).png"));
+                imgModificar.setImage(new Image(PAQUETE_IMAGE + "image (3).png"));
 
                 btnEliminar.setVisible(true);
                 btnEliminar.setDisable(false);
-                imgEliminar.setVisible(true);
+                
                 btnReporte.setVisible(true);
                 btnReporte.setDisable(false);
-                imgReporte.setVisible(true);
+                
 
                 operacion = Operacion.NINGUNO;
                 break;
@@ -504,15 +490,15 @@ public class InstructoresController implements Initializable {
 
                         btnEliminar.setText("Eliminar");
                         btnModificar.setText("Modificar");
-                        imgEliminar.setImage(new Image(PAQUETE_IMAGE + "Eliminar.png"));
-                        imgModificar.setImage(new Image(PAQUETE_IMAGE + "Editar.png"));
+                        imgEliminar.setImage(new Image(PAQUETE_IMAGE + "image (4).png"));
+                        imgModificar.setImage(new Image(PAQUETE_IMAGE + "image (3).png"));
 
                         btnNuevo.setVisible(true);
                         btnNuevo.setDisable(false);
-                        imgNuevo.setVisible(true);
+                        
                         btnReporte.setVisible(true);
                         btnReporte.setDisable(false);
-                        imgReporte.setVisible(true);
+                        
 
                         operacion = Operacion.NINGUNO;
                     }
@@ -579,15 +565,15 @@ public class InstructoresController implements Initializable {
 
                 btnEliminar.setText("Eliminar");
                 btnModificar.setText("Modificar");
-                imgEliminar.setImage(new Image(PAQUETE_IMAGE + "Eliminar.png"));
-                imgModificar.setImage(new Image(PAQUETE_IMAGE + "Editar.png"));
+                imgEliminar.setImage(new Image(PAQUETE_IMAGE + "image (4).png"));
+                imgModificar.setImage(new Image(PAQUETE_IMAGE + "image (3).png"));
 
                 btnNuevo.setVisible(true);
                 btnNuevo.setDisable(false);
-                imgNuevo.setVisible(true);
+               
                 btnReporte.setVisible(true);
                 btnReporte.setDisable(false);
-                imgReporte.setVisible(true);
+                
 
                 operacion = Operacion.NINGUNO;
                 break;
@@ -615,10 +601,22 @@ public class InstructoresController implements Initializable {
                 }
         }
     }
+    private void info() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION); //Instancia la clase Alert y se indica el tipo de alerta
+        //alert.setHeaderText("Informe"); //Nombre del encabezado
+        alert.setHeaderText(null); //Si no se desea encabezado se coloca un null
+        alert.setTitle("Informe"); //Titulo del cuadro 
+        alert.setContentText("Opcion exclusiva de la version pro"); //Mensaje que se quiere mostrar
 
+        Stage stageAlert = (Stage) alert.getDialogPane().getScene().getWindow();
+        Image icon = new Image(getClass().getResourceAsStream("../resources/image/IconoAlert.png"));
+        stageAlert.getIcons().add(icon);
+
+        alert.showAndWait();
+    }
     @FXML
-    void clicReporte(ActionEvent event) {
-
+    void mostrarAlertInfo(ActionEvent event) {
+      info();  
     }
 
     @FXML

@@ -40,6 +40,7 @@ public class SalonesController implements Initializable {
     private SalonesController.Operacion operacion = SalonesController.Operacion.NINGUNO;
     private Principal escenarioPrincipal;
     private final String TIPO_ALERT_WARNING = "warning";
+    private final String TIPO_ALERT_INFORMATION = "Iinformation";
     private final String TITULO_ALERT = "Control Académico Kinal";
 
     @FXML
@@ -237,7 +238,7 @@ public class SalonesController implements Initializable {
                 operacion = Operacion.GUARDAR;
                 break;
             case GUARDAR:
-                if (comprobacionCampostxt()) {
+                if (comprobacionCamposTxt()) {
                     if (agregarSalones()) {
                         cargarDatos();
                         limpiarTxtField();
@@ -280,7 +281,7 @@ public class SalonesController implements Initializable {
             pstmt.setString(1, salones.getCodigoSalon());
             pstmt.setString(2, salones.getDescripcion());
             pstmt.setInt(3, salones.getCapacidadMaxima());
-            pstmt.setString(5, salones.getEdificio());
+            pstmt.setString(4, salones.getEdificio());
             pstmt.setInt(5, salones.getNivel());
 
             System.out.println(pstmt.toString());
@@ -305,93 +306,148 @@ public class SalonesController implements Initializable {
         return false;
     }
 
-    private boolean comprobacionCampostxt() {
-        boolean codigo = false;
-        boolean salon = false;
-        boolean capacidadMaxima = false;
-        boolean edificio = false;
-        boolean nivel = false;
-        boolean descripcion = false;
-
+//    private boolean comprobacionCampostxt() {
+//        boolean codigo = false;
+//        boolean salon = false;
+//        boolean capacidadMaxima = false;
+//        boolean edificio = false;
+//        boolean nivel = false;
+//        boolean descripcion = false;
+//
+//        if (txtSalon.getText().isEmpty()
+//                && txtSalon.getText().isEmpty()
+//                && txtCapacidadMaxima.getText().isEmpty()
+//                && txtNivel.getText().isEmpty()
+//                && txtDescripcion.getText().isEmpty()) {
+//            System.out.println("vacio");
+//            mostrarAlert(TIPO_ALERT_WARNING, "Los campos se encuentran vacíos");
+//        } else {
+//
+//            if (txtSalon.getText().isEmpty()) {
+//
+//                mostrarAlert(TIPO_ALERT_WARNING, "El campo codigo salon esta vacio");
+//            } else {
+//                if (txtSalon.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo codigo salon tiene espacios al inicio.");
+//                } else {
+//                    codigo = true;
+//                }
+//            }
+//
+//            if (txtSalon.getText().isEmpty()) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "El campo salon esta vacio");
+//            } else {
+//                if (txtSalon.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo salon tiene espacios al inicio.");
+//                } else {
+//                    salon = true;
+//                }
+//            }
+//
+//            if (txtCapacidadMaxima.getText().isEmpty()) {
+//                capacidadMaxima = true;
+//            } else {
+//                if (txtCapacidadMaxima.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo capacidad tiene espacios al inicio.");
+//                } else {
+//                    capacidadMaxima = true;
+//                }
+//            }
+//
+//            if (txtEdificio.getText().isEmpty()) {
+//                edificio = true;
+//            } else {
+//                if (txtEdificio.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo edificio tiene espacios al inicio.");
+//                } else {
+//                    edificio = true;
+//                }
+//            }
+//
+//            if (txtNivel.getText().isEmpty()) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "Vel campo nivel esta vacio.");
+//            } else {
+//                if (txtNivel.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo nivel tiene espacios al inicio.");
+//                } else {
+//                    nivel = true;
+//                }
+//            }
+//                        if (txtDescripcion.getText().isEmpty()) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "Vel campo nivel esta vacio.");
+//            } else {
+//                if (txtDescripcion.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo nivel tiene espacios al inicio.");
+//                } else {
+//                    nivel = true;
+//                }
+//            }
+//            if (codigo && salon && capacidadMaxima && edificio && nivel && descripcion) {
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
+//    
+//    
+//    
+//
+//    private void mostrarAlert(String alertType, String contentText) {
+//        alertType = alertType.toLowerCase();
+//        switch (alertType) {
+//            case "warning":
+//                Alert alert = new Alert(Alert.AlertType.WARNING);
+//                alert.setTitle(TITULO_ALERT);
+//                alert.setHeaderText(null);
+//                alert.setContentText(contentText);
+//                alert.show();
+//                break;
+//        }
+//    }
+    
+    private boolean comprobacionCamposTxt() {
         if (txtSalon.getText().isEmpty()
-                && txtSalon.getText().isEmpty()
-                && txtCapacidadMaxima.getText().isEmpty()
-                && txtNivel.getText().isEmpty()
-                && txtDescripcion.getText().isEmpty()) {
-            System.out.println("vacio");
-            mostrarAlert(TIPO_ALERT_WARNING, "Los campos se encuentran vacíos");
+                || txtCapacidadMaxima.getText().isEmpty()
+                || txtEdificio.getText().isEmpty()
+                || txtNivel.getText().isEmpty()
+                || txtDescripcion.getText().isEmpty()) {
+            mostrarAlert(TIPO_ALERT_WARNING, "Verifique que los campos contengan datos.");
         } else {
-
-            if (txtSalon.getText().isEmpty()) {
-
-                mostrarAlert(TIPO_ALERT_WARNING, "El campo codigo salon esta vacio");
+            if (txtSalon.getText().charAt(0) == ' '
+                    || txtCapacidadMaxima.getText().charAt(0) == ' '
+                    || txtEdificio.getText().charAt(0) == ' '
+                    || txtNivel.getText().charAt(0) == ' '
+                    || txtDescripcion.getText().charAt(0) == ' ') {
+                mostrarAlert(TIPO_ALERT_WARNING, "Verifique que los campos no contenga un espacio al inicio.");
             } else {
-                if (txtSalon.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo codigo salon tiene espacios al inicio.");
-                } else {
-                    codigo = true;
-                }
-            }
-
-            if (txtSalon.getText().isEmpty()) {
-                mostrarAlert(TIPO_ALERT_WARNING, "El campo salon esta vacio");
-            } else {
-                if (txtSalon.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo salon tiene espacios al inicio.");
-                } else {
-                    salon = true;
-                }
-            }
-
-            if (txtCapacidadMaxima.getText().isEmpty()) {
-                capacidadMaxima = true;
-            } else {
-                if (txtCapacidadMaxima.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo capacidad tiene espacios al inicio.");
-                } else {
-                    capacidadMaxima = true;
-                }
-            }
-
-            if (txtEdificio.getText().isEmpty()) {
-                edificio = true;
-            } else {
-                if (txtEdificio.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo edificio tiene espacios al inicio.");
-                } else {
-                    edificio = true;
-                }
-            }
-
-            if (txtNivel.getText().isEmpty()) {
-                mostrarAlert(TIPO_ALERT_WARNING, "Vel campo nivel esta vacio.");
-            } else {
-                if (txtNivel.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo nivel tiene espacios al inicio.");
-                } else {
-                    nivel = true;
-                }
-            }
-            if (codigo && salon && capacidadMaxima && edificio && nivel && descripcion) {
                 return true;
             }
         }
-
         return false;
     }
 
-    private void mostrarAlert(String alertType, String contentText) {
-        alertType = alertType.toLowerCase();
+    private void mostrarAlert(String alertType, String alertContent) {
         switch (alertType) {
-            case "warning":
+            case TIPO_ALERT_WARNING:
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle(TITULO_ALERT);
                 alert.setHeaderText(null);
-                alert.setContentText(contentText);
+                alert.setTitle(TITULO_ALERT);
+                alert.setContentText(alertContent);
                 alert.show();
+                break;
+            case TIPO_ALERT_INFORMATION:
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setHeaderText(null);
+                alert2.setTitle(TITULO_ALERT);
+                alert2.setContentText(alertContent);
+                Stage stageAlert2 = (Stage) alert2.getDialogPane().getScene().getWindow();
+                stageAlert2.getIcons().add(new Image(PAQUETE_IMAGE + "informacion.png"));
+                alert2.show();
                 break;
         }
     }
+    
 
     @FXML
     private void clicModificar() {

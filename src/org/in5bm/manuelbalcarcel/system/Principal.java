@@ -98,6 +98,16 @@ public class Principal extends Application {
         }
     }
 
+        public void mostrarInstructores() {
+        try {
+            InstructoresController instructoresController = (InstructoresController) cambiarEscena("InstructoresView.fxml", 1151, 610);
+            instructoresController.setEscenarioPrincipal(this);
+        } catch (Exception ex) {
+            System.err.println("Se produjo un error al mostrar la vista de horario");
+            ex.printStackTrace();
+        }
+    }
+    
     public Initializable cambiarEscena(String vistaFxml, int ancho, int alto) throws IOException {
         System.out.println(PAQUETE_VIEW + vistaFxml);
         FXMLLoader cargadorFXML = new FXMLLoader(getClass().getResource(PAQUETE_VIEW + vistaFxml));

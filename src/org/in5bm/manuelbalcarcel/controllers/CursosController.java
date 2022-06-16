@@ -115,6 +115,7 @@ public class CursosController implements Initializable {
         NINGUNO, GUARDAR, ACTUALIZAR
     }
     private final String TIPO_ALERT_WARNING = "warning";
+    private final String TIPO_ALERT_INFORMATION = "information";
     private final String TITULO_ALERT = "Control Académico Kinal";
 
     private Operacion operacion = Operacion.NINGUNO;
@@ -168,7 +169,7 @@ public class CursosController implements Initializable {
     }
 
     private void habilitarCampos() {
-        txtId.setEditable(true);
+        txtId.setEditable(false);
         txtNombreCurso.setEditable(true);
         spnCiclo.setEditable(true);
         spnCupoMaximo.setEditable(true);
@@ -178,7 +179,7 @@ public class CursosController implements Initializable {
         //cmbHorario.setEditable(true);
         //cmbInstructor.setEditable(true);
         //cmbSalon.setEditable(true);
-        txtId.setDisable(false);
+        txtId.setDisable(true);
         txtNombreCurso.setDisable(false);
         spnCiclo.setDisable(false);
         spnCupoMaximo.setDisable(false);
@@ -190,7 +191,7 @@ public class CursosController implements Initializable {
     }
 
     private void limpiarCampos() {
-        txtId.clear();
+        txtId.setText("0");
         txtNombreCurso.clear();
         spnCiclo.getValueFactory().setValue(2022);
         spnCupoMaximo.getValueFactory().setValue(0);
@@ -528,7 +529,7 @@ public class CursosController implements Initializable {
             }
         }
 
-        return false;
+         return false;
     }
 
     private boolean actualizarCursos() {
@@ -644,10 +645,6 @@ public class CursosController implements Initializable {
                 habilitarCampos();
                 tblCursos.setDisable(true);
 
-                // Clave primarias
-                txtId.setEditable(true);
-                txtId.setDisable(false);
-
                 btnNuevo.setText("Guardar");
                 imgNuevo.setImage(new Image(PAQUETE_IMAGES + "image.png"));
 
@@ -663,13 +660,12 @@ public class CursosController implements Initializable {
                 operacion = Operacion.GUARDAR;
                 break;
             case GUARDAR:
-                if(comprobacionCampostxt()){
-                if (agregarCursos()) {
-                    cargarDatos();
-                    limpiarCampos();
-                    deshabilitarCampos();
-                   
-                }
+                if (comprobacionCamposTxt()) {
+                    if (agregarCursos()) {
+                        cargarDatos();
+                        limpiarCampos();
+                        deshabilitarCampos();
+
                     tblCursos.setDisable(false);
                     btnNuevo.setText("Nuevo");
                     imgNuevo.setImage(new Image(PAQUETE_IMAGES + "image (2).png"));
@@ -681,7 +677,7 @@ public class CursosController implements Initializable {
                     btnReporte.setDisable(false);
                     btnReporte.setVisible(true);
                     operacion = Operacion.NINGUNO;
-                
+                }
                 }
                 break;
         }
@@ -1165,80 +1161,103 @@ public class CursosController implements Initializable {
         escenarioPrincipal.mostrarEscenearioPrincipal();
     }
 
-    private void mostrarAlert(String alertType, String contentText) {
-        alertType = alertType.toLowerCase();
-        switch (alertType) {
-            case "warning":
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle(TITULO_ALERT);
-                alert.setHeaderText(null);
-                alert.setContentText(contentText);
-                alert.show();
-                break;
-        }
-    }
+//    private void mostrarAlert(String alertType, String contentText) {
+//        alertType = alertType.toLowerCase();
+//        switch (alertType) {
+//            case "warning":
+//                Alert alert = new Alert(Alert.AlertType.WARNING);
+//                alert.setTitle(TITULO_ALERT);
+//                alert.setHeaderText(null);
+//                alert.setContentText(contentText);
+//                alert.show();
+//                break;
+//        }
+//    }
+//    private boolean comprobacionCampostxt() {
+//        boolean nombreCurso = false;
+//        boolean carreraTecnicaId = false;
+//        boolean horarioId = false;
+//        boolean instructorId = false;
+//        boolean salonId = false;
+//
+//        if ( txtNombreCurso.getText().isEmpty()
+//                && cmbCarreraTecnica == null
+//                && cmbHorario == null
+//                && cmbInstructor == null
+//                && cmbSalon == null) {
+//            System.out.println("vacio");
+//            mostrarAlert(TIPO_ALERT_WARNING, "Los campos se encuentran vacíos");
+//        } else {
+//            if (txtNombreCurso.getText().isEmpty()) {
+//
+//                mostrarAlert(TIPO_ALERT_WARNING, "Verifique que el campo Nombre curso contenga datos.");
+//            } else {
+//                if (txtNombreCurso.getText().charAt(0) == ' ') {
+//                    mostrarAlert(TIPO_ALERT_WARNING, "el campo nombre curso tiene espacios al inicio.");
+//                } else {
+//                    nombreCurso = true;
+//                }
+//            }
+//
+//            if (cmbCarreraTecnica == null) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "el campo carreras tecnicas esta vacio.");
+//            } else {
+//                carreraTecnicaId = true;
+//            }
+//            if (cmbHorario == null) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "el campo Horarios tecnicas esta vacio.");
+//            } else {
+//                horarioId = true;
+//            }
+//            if (cmbInstructor == null) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "el campo instructor esta vacio.");
+//            } else {
+//                instructorId = true;
+//            }
+//            if (cmbSalon == null) {
+//                mostrarAlert(TIPO_ALERT_WARNING, "el campo salon esta vacio.");
+//            } else {
+//                carreraTecnicaId = true;
+//            }
+//
+//        }
+//        return false;
+//    }
 
-    private boolean comprobacionCampostxt() {
-        boolean id = false;
-        boolean nombreCurso = false;
-        boolean carreraTecnicaId = false;
-        boolean horarioId = false;
-        boolean instructorId = false;
-        boolean salonId = false;
-
-        if (txtId.getText().isEmpty()
-                && txtNombreCurso.getText().isEmpty()
-                && cmbCarreraTecnica == null
-                && cmbHorario == null
-                && cmbInstructor == null
-                && cmbSalon == null) {
-            System.out.println("vacio");
-            mostrarAlert(TIPO_ALERT_WARNING, "Los campos se encuentran vacíos");
+private boolean comprobacionCamposTxt() {
+        if (txtNombreCurso.getText().isEmpty()) {
+            mostrarAlert(TIPO_ALERT_WARNING, "Verifique que los campos contengan datos.");
         } else {
-
-            if (txtId.getText().isEmpty()) {
-
-                mostrarAlert(TIPO_ALERT_WARNING, "Verifique que el campo ID contenga datos.");
+            if (txtNombreCurso.getText().charAt(0) == ' ') 
+            {
+                mostrarAlert(TIPO_ALERT_WARNING, "Verifique que los campos no contenga un espacio al inicio.");
             } else {
-                if (txtId.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo ID tiene espacios al inicio.");
-                } else {
-                    id = true;
-                }
+                return true;
             }
-            if (txtNombreCurso.getText().isEmpty()) {
-
-                mostrarAlert(TIPO_ALERT_WARNING, "Verifique que el campo Nombre curso contenga datos.");
-            } else {
-                if (txtId.getText().charAt(0) == ' ') {
-                    mostrarAlert(TIPO_ALERT_WARNING, "el campo nombre curso tiene espacios al inicio.");
-                } else {
-                    nombreCurso = true;
-                }
-            }
-
-            if (cmbCarreraTecnica == null) {
-                mostrarAlert(TIPO_ALERT_WARNING, "el campo carreras tecnicas esta vacio.");
-            } else {
-                carreraTecnicaId = true;
-            }
-            if (cmbHorario == null) {
-                mostrarAlert(TIPO_ALERT_WARNING, "el campo Horarios tecnicas esta vacio.");
-            } else {
-                horarioId = true;
-            }
-            if (cmbInstructor== null) {
-                mostrarAlert(TIPO_ALERT_WARNING, "el campo instructor esta vacio.");
-            } else {
-                instructorId = true;
-            }
-                        if (cmbSalon == null) {
-                mostrarAlert(TIPO_ALERT_WARNING, "el campo salon esta vacio.");
-            } else {
-                    carreraTecnicaId = true;
-                }
-
         }
         return false;
     }
+
+    private void mostrarAlert(String alertType, String alertContent) {
+        switch (alertType) {
+            case TIPO_ALERT_WARNING:
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText(null);
+                alert.setTitle(TITULO_ALERT);
+                alert.setContentText(alertContent);
+                alert.show();
+                break;
+            case TIPO_ALERT_INFORMATION:
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                alert2.setHeaderText(null);
+                alert2.setTitle(TITULO_ALERT);
+                alert2.setContentText(alertContent);
+                Stage stageAlert2 = (Stage) alert2.getDialogPane().getScene().getWindow();
+                stageAlert2.getIcons().add(new Image(PAQUETE_IMAGES + "informacion.png"));
+                alert2.show();
+                break;
+        }
+    }
+    
+
 }

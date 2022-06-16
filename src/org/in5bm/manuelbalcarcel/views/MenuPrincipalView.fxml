@@ -58,7 +58,7 @@
             <Image url="@../resources/image/image%20(6).png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="205.0" fitWidth="1067.0" layoutX="-1.0" layoutY="-40.0" pickOnBounds="true" rotate="180.0" smooth="false">
+      <ImageView fitHeight="205.0" fitWidth="1067.0" layoutX="-21.0" layoutY="-23.0" pickOnBounds="true" rotate="180.0" smooth="false">
          <image>
             <Image url="@../resources/image/image%20(6).png" />
          </image>
@@ -97,7 +97,7 @@
                   <Image url="@../resources/image/image%20(9).png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="169.0" styleClass="botones-menu" text="Instructores" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#clicInstructores" prefHeight="100.0" prefWidth="169.0" styleClass="botones-menu" text="Instructores" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
                </font>
@@ -183,5 +183,27 @@
             <Image url="@../resources/image/zyro-image-removebg-preview.png" />
          </image>
       </ImageView>
+      <HBox alignment="CENTER" layoutX="314.0" layoutY="460.0" prefHeight="102.0" prefWidth="443.0" spacing="20.0" style="-fx-background-color: #4990e2;">
+         <children>
+            <ImageView fitHeight="102.0" fitWidth="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/image%20(7).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="112.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/image/Asignacion.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#clicSalones" prefHeight="101.0" prefWidth="262.0" styleClass="botones-menu" text="Asignacion Alumnos" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>
