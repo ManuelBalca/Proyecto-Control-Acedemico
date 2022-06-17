@@ -100,10 +100,19 @@ public class Principal extends Application {
 
         public void mostrarInstructores() {
         try {
-            InstructoresController instructoresController = (InstructoresController) cambiarEscena("InstructoresView.fxml", 1151, 610);
+            InstructoresController instructoresController = (InstructoresController) cambiarEscena("InstructoresView.fxml", 1260, 680);
             instructoresController.setEscenarioPrincipal(this);
         } catch (Exception ex) {
-            System.err.println("Se produjo un error al mostrar la vista de horario");
+            System.err.println("Se produjo un error al mostrar la vista de isntructores");
+            ex.printStackTrace();
+        }
+    }
+                public void mostrarAsignacion() {
+        try {
+            AsignacionAlumnosController asignacionesController = (AsignacionAlumnosController) cambiarEscena("AsignacionesAlumnosView.fxml", 1121, 610);
+            asignacionesController.setEscenarioPrincipal(this);
+        } catch (Exception ex) {
+            System.err.println("Se produjo un error al mostrar la vista de adignaciones");
             ex.printStackTrace();
         }
     }

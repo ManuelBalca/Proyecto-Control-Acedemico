@@ -429,7 +429,7 @@ public class AlumnosController implements Initializable {
                     imgModificar.setImage(new Image(PAQUETE_IMAGE + "image.png"));
 
                     btnEliminar.setText("cancelar");
-                    imgEliminar.setImage(new Image(PAQUETE_IMAGE + "cancel.png"));
+                    imgEliminar.setImage(new Image(PAQUETE_IMAGE + "cancel"));
 
                     btnReporte.setDisable(true);
                     btnReporte.setVisible(false);

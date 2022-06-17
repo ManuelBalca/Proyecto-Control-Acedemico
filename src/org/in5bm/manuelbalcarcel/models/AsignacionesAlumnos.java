@@ -21,7 +21,7 @@ public class AsignacionesAlumnos {
     private IntegerProperty id;
     private StringProperty alumnoId;
     private IntegerProperty cursoId;
-    private ObjectProperty<LocalDateTime> fechaAsignacion;
+    private ObjectProperty <LocalDateTime> fechaAsignacion;
 
     public AsignacionesAlumnos() {
         this.id = new SimpleIntegerProperty();
@@ -34,7 +34,7 @@ public class AsignacionesAlumnos {
         this.id = new SimpleIntegerProperty(id);
         this.alumnoId = new SimpleStringProperty(alumnoId);
         this.cursoId = new SimpleIntegerProperty(cursoId);
-        this.fechaAsignacion = new SimpleObjectProperty<>(fechaAsignacion);
+        this.fechaAsignacion = new SimpleObjectProperty<LocalDateTime>(fechaAsignacion);
     }
 
     // Getter's and Setter's
@@ -74,7 +74,7 @@ public class AsignacionesAlumnos {
         this.cursoId.set(cursoId);
     }
 
-    public ObjectProperty<LocalDateTime> fechaAsignacion() {
+    public ObjectProperty<LocalDateTime >fechaAsignacion() {
         return fechaAsignacion;
     }
 

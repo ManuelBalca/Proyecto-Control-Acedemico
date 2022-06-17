@@ -1,11 +1,11 @@
 package org.in5bm.manuelbalcarcel.controllers;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -31,8 +31,9 @@ import javafx.stage.Stage;
 import org.in5bm.manuelbalcarcel.bean.db.Conection;
 
 import org.in5bm.manuelbalcarcel.models.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 import org.in5bm.manuelbalcarcel.system.Principal;
 
 /**
@@ -67,11 +68,11 @@ public class AsignacionAlumnosController implements Initializable {
     @FXML
     private TableView<AsignacionesAlumnos> tblAsignacionesAlumnos; // New
     @FXML
-    private TableColumn<AsignacionesAlumnos, Integer> colId;
+    private TableColumn<AsignacionesAlumnos, IntegerProperty> colId;
     @FXML
-    private TableColumn<AsignacionesAlumnos, String> colCarne;
+    private TableColumn<AsignacionesAlumnos, StringProperty> colCarne;
     @FXML
-    private TableColumn<AsignacionesAlumnos, Integer> colCursoId;
+    private TableColumn<AsignacionesAlumnos, IntegerProperty> colCursoId;
     @FXML
     private TableColumn<AsignacionesAlumnos, LocalDateTime> colFechaAsignacion;
 
@@ -103,7 +104,10 @@ public class AsignacionAlumnosController implements Initializable {
 
     private Operacion operacion = Operacion.NINGUNO;
 
-    private final String PAQUETE_IMAGES = "org/in5bm/jorgeperez/resources/images/";
+    private final String PAQUETE_IMAGES = "org/in5bm/manuelbalcarcel/resources/image/";
+    private final String TITULO_ALERT = "Control Académico Kinal";
+    private final String TIPO_ALERT_WARNING = "warning";
+    private final String TIPO_ALERT_INFORMATION = "information";
 
     private ObservableList<Alumnos> listaObservableAlumnos;
     private ObservableList<Cursos> listaObservableCursos;
@@ -220,10 +224,10 @@ public class AsignacionAlumnosController implements Initializable {
 
             while (rs.next()) {
                 AsignacionesAlumnos asignacion = new AsignacionesAlumnos();
-                asignacion.setId(rs.getInt("id"));
-                asignacion.setAlumnoId(rs.getString("alumno_id"));
-                asignacion.setCursoId(rs.getInt("curso_id"));
-                asignacion.setFechaAsignacion(rs.getTimestamp("fecha_asignacion").toLocalDateTime());
+                asignacion.setId(rs.getInt(1));
+                asignacion.setAlumnoId(rs.getString(2));
+                asignacion.setCursoId(rs.getInt(3));
+                asignacion.setFechaAsignacion(rs.getTimestamp(4).toLocalDateTime());
 
                 System.out.println(asignacion);
 
@@ -259,9 +263,13 @@ public class AsignacionAlumnosController implements Initializable {
     public void cargarDatos() {
         tblAsignacionesAlumnos.setItems(getAsignacionesAlumnos());
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         colCarne.setCellValueFactory(new PropertyValueFactory<>("alumnoId"));
+
         colCursoId.setCellValueFactory(new PropertyValueFactory<>("cursoId"));
+
         colFechaAsignacion.setCellValueFactory(new PropertyValueFactory<>("fechaAsignacion"));
+
         cmbAlumno.setItems(getAlumnos());
         cmbCurso.setItems(getCursos());
     }
@@ -452,6 +460,7 @@ public class AsignacionAlumnosController implements Initializable {
                                     .getSelectionModel().getSelectedItem()).getAlumnoId()
                     )
             );
+            dpkFechaAsignacion.setValue((((AsignacionesAlumnos) tblAsignacionesAlumnos.getSelectionModel().getSelectedItem()).getFechaAsignacion()).toLocalDate());
 
         }
     }
@@ -474,7 +483,7 @@ public class AsignacionAlumnosController implements Initializable {
 
             pstmt.setString(1, asignacion.getAlumnoId());
             pstmt.setInt(2, asignacion.getCursoId());
-            pstmt.setTimestamp(3, Timestamp.valueOf(asignacion.getFechaAsignacion()));
+            pstmt.setObject(3, asignacion.getFechaAsignacion());
 
             System.out.println(pstmt.toString());
 
@@ -503,33 +512,31 @@ public class AsignacionAlumnosController implements Initializable {
 
     private boolean actualizarAsignacion() {
         if (existeElementoSeleccionado()) {
-            /*
-            Alumnos alumno = new Alumnos();
-            alumno.setCarne(txtCarne.getText());
-            alumno.setNombre1(txtNombre1.getText());
-            alumno.setNombre2(txtNombre2.getText());
-            alumno.setNombre3(txtNombre3.getText());
-            alumno.setApellido1(txtApellido1.getText());
-            alumno.setApellido2(txtApellido2.getText());
+
+            AsignacionesAlumnos asignacion = new AsignacionesAlumnos();
+
+            asignacion.setId(Integer.parseInt(txtId.getText()));
+            asignacion.setAlumnoId(((Alumnos) cmbAlumno.getSelectionModel().getSelectedItem()).getCarne());
+
+            asignacion.setCursoId(((Cursos) cmbCurso.getSelectionModel().getSelectedItem()).getId());
+
+            asignacion.setFechaAsignacion(dpkFechaAsignacion.getValue().atStartOfDay());
 
             PreparedStatement pstmt = null;
 
             try {
-                pstmt = Conexion.getInstance().getConexion()
-                        .prepareCall("{CALL sp_alumnos_update(?, ?, ?, ?, ?, ?)}");
-
-                pstmt.setString(1, alumno.getCarne());
-                pstmt.setString(2, alumno.getNombre1());
-                pstmt.setString(3, alumno.getNombre2());
-                pstmt.setString(4, alumno.getNombre3());
-                pstmt.setString(5, alumno.getApellido1());
-                pstmt.setString(6, alumno.getApellido2());
+                pstmt = Conection.getInstance().getConection()
+                        .prepareCall("{CALL sp_asignaciones_alumnos_update(?, ?, ?, ?)}");
+                pstmt.setInt(1, asignacion.getId());
+                pstmt.setString(2, asignacion.getAlumnoId());
+                pstmt.setInt(3, asignacion.getCursoId());
+                pstmt.setObject(4, asignacion.getFechaAsignacion());
                 System.out.println(pstmt.toString());
                 pstmt.execute();
                 return true;
             } catch (SQLException e) {
                 System.err.println("\nSe produjo un error al intentar actualizar "
-                        + "el siguiente registro: " + alumno.toString());
+                        + "el siguiente registro: " + asignacion.toString());
                 e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -542,7 +549,7 @@ public class AsignacionAlumnosController implements Initializable {
                     e.printStackTrace();
                 }
             }
-             */
+
         }
         return false;
     }
@@ -558,7 +565,7 @@ public class AsignacionAlumnosController implements Initializable {
 
         try {
             pstmt = Conection.getInstance().getConection()
-                    .prepareCall("{CALL sp_asignaciones_alumnos_delete(?)}");
+                    .prepareCall("CALL sp_asignaciones_alumnos_delete(?)");
 
             pstmt.setInt(1, asignacion.getId());
 
@@ -591,7 +598,7 @@ public class AsignacionAlumnosController implements Initializable {
     }
 
     @FXML
-    private void clicNuevo(ActionEvent event) {
+    private void nuevoIngreso(ActionEvent event) {
         switch (operacion) {
             case NINGUNO:
                 limpiarCampos();
@@ -603,7 +610,7 @@ public class AsignacionAlumnosController implements Initializable {
                 txtId.setDisable(true);
 
                 btnNuevo.setText("Guardar");
-                imgNuevo.setImage(new Image(PAQUETE_IMAGES + "save.png"));
+                imgNuevo.setImage(new Image(PAQUETE_IMAGES + "image.png"));
 
                 btnModificar.setText("Cancelar");
                 imgModificar.setImage(new Image(PAQUETE_IMAGES + "cancel.png"));
@@ -623,9 +630,9 @@ public class AsignacionAlumnosController implements Initializable {
                     cargarDatos();
                     tblAsignacionesAlumnos.setDisable(false);
                     btnNuevo.setText("Nuevo");
-                    imgNuevo.setImage(new Image(PAQUETE_IMAGES + "nuevo.png"));
+                    imgNuevo.setImage(new Image(PAQUETE_IMAGES + "image (2).png"));
                     btnModificar.setText("Modificar");
-                    imgModificar.setImage(new Image(PAQUETE_IMAGES + "editar.png"));
+                    imgModificar.setImage(new Image(PAQUETE_IMAGES + "image (3).png"));
                     btnEliminar.setDisable(false);
                     btnEliminar.setVisible(true);
                     btnReporte.setDisable(false);
@@ -648,7 +655,7 @@ public class AsignacionAlumnosController implements Initializable {
                     btnNuevo.setVisible(false);
 
                     btnModificar.setText("Guardar");
-                    imgModificar.setImage(new Image(PAQUETE_IMAGES + "save.png"));
+                    imgModificar.setImage(new Image(PAQUETE_IMAGES + "image.png"));
                     btnEliminar.setText("Cancelar");
                     imgEliminar.setImage(new Image(PAQUETE_IMAGES + "cancel.png"));
                     btnReporte.setDisable(true);
@@ -665,9 +672,9 @@ public class AsignacionAlumnosController implements Initializable {
                 break;
             case GUARDAR: // Cancelar inserción
                 btnNuevo.setText("Nuevo");
-                imgNuevo.setImage(new Image(PAQUETE_IMAGES + "nuevo.png"));
+                imgNuevo.setImage(new Image(PAQUETE_IMAGES + "image (2).png"));
                 btnModificar.setText("Modificar");
-                imgModificar.setImage(new Image(PAQUETE_IMAGES + "editar.png"));
+                imgModificar.setImage(new Image(PAQUETE_IMAGES + "image (3).png"));
                 btnEliminar.setDisable(false);
                 btnEliminar.setVisible(true);
                 btnReporte.setDisable(false);
@@ -689,15 +696,15 @@ public class AsignacionAlumnosController implements Initializable {
                         tblAsignacionesAlumnos.getSelectionModel().clearSelection();
 
                         btnNuevo.setText("Nuevo");
-                        imgNuevo.setImage(new Image(PAQUETE_IMAGES + "nuevo.png"));
+                        imgNuevo.setImage(new Image(PAQUETE_IMAGES + "image (2).png"));
                         btnNuevo.setDisable(false);
                         btnNuevo.setVisible(true);
 
                         btnModificar.setText("Modificar");
-                        imgModificar.setImage(new Image(PAQUETE_IMAGES + "editar.png"));
+                        imgModificar.setImage(new Image(PAQUETE_IMAGES + "image (3).png"));
 
                         btnEliminar.setText("Eliminar");
-                        imgEliminar.setImage(new Image(PAQUETE_IMAGES + "eliminar.png"));
+                        imgEliminar.setImage(new Image(PAQUETE_IMAGES + "image (4).png"));
                         btnEliminar.setDisable(false);
                         btnEliminar.setVisible(true);
 
@@ -718,10 +725,10 @@ public class AsignacionAlumnosController implements Initializable {
                 btnNuevo.setVisible(true);
 
                 btnModificar.setText("Modificar");
-                imgModificar.setImage(new Image(PAQUETE_IMAGES + "editar.png"));
+                imgModificar.setImage(new Image(PAQUETE_IMAGES + "image (3).png"));
 
                 btnEliminar.setText("Eliminar");
-                imgEliminar.setImage(new Image(PAQUETE_IMAGES + "eliminar.png"));
+                imgEliminar.setImage(new Image(PAQUETE_IMAGES + "image (4).png"));
 
                 btnReporte.setDisable(false);
                 btnReporte.setVisible(true);
@@ -741,7 +748,7 @@ public class AsignacionAlumnosController implements Initializable {
                     alertConfirm.setContentText("¿Está seguro que desea eliminar el registro seleccionado?");
 
                     Stage stage = (Stage) alertConfirm.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image(PAQUETE_IMAGES + "colegio.png"));
+                    stage.getIcons().add(new Image(PAQUETE_IMAGES + "IconoAlert.png"));
 
                     Optional<ButtonType> result = alertConfirm.showAndWait();
                     if (result.get().equals(ButtonType.OK)) {
@@ -773,13 +780,13 @@ public class AsignacionAlumnosController implements Initializable {
     }
 
     @FXML
-    private void clicReporte(ActionEvent event) {
+    private void mostrarAlertInfo(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("AVISO!!!");
         alerta.setHeaderText(null);
         alerta.setContentText("Esta funcionalidad solo está disponible en la versión PRO");
         Stage stageAlert = (Stage) alerta.getDialogPane().getScene().getWindow();
-        stageAlert.getIcons().add(new Image(PAQUETE_IMAGES + "colegio.png"));
+        stageAlert.getIcons().add(new Image(PAQUETE_IMAGES + "IconoAlert.png"));
         alerta.show();
     }
 

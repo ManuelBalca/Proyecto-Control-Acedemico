@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="1121.0" stylesheets="@../resources/css/EstiloModulos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.in5bm.manuelbalcarcel.controllers.AsignacionAlumnosController">
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="1121.0" stylesheets="@../resources/css/EstiloModulos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.in5bm.manuelbalcarcel.controllers.AsignacionAlumnosController">
    <children>
       <BorderPane layoutX="-1.0" prefHeight="610.0" prefWidth="1121.0">
          <left>
@@ -47,7 +47,10 @@
                               <Insets top="-1.0" />
                            </opaqueInsets>
                         </Label>
-                        <ImageView fitHeight="134.0" fitWidth="125.0" layoutX="21.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="134.0" fitWidth="125.0" layoutX="21.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/image/Asignacion.png" />
+                           </image></ImageView>
                      </children>
                   </Pane>
                   <VBox alignment="CENTER_RIGHT" layoutX="3.0" layoutY="223.0" prefHeight="332.0" prefWidth="228.0" spacing="20.0" style="-fx-background-color: #4990e2;">
@@ -127,14 +130,12 @@
          <center>
             <Pane prefHeight="700.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="tblAsignacionAlumnos" layoutX="23.0" layoutY="212.0" onMouseClicked="#seleccionarElemento" prefHeight="358.0" prefWidth="823.0">
+                  <TableView fx:id="tblAsignacionesAlumnos" layoutX="23.0" layoutY="212.0" onMouseClicked="#seleccionarElemento" prefHeight="358.0" prefWidth="789.0">
                     <columns>
-                      <TableColumn fx:id="colID" prefWidth="143.0" text="ID asignacion" />
-                      <TableColumn fx:id="colCarne" prefWidth="135.0" text="carne" />
-                        <TableColumn fx:id="colNombreAlumno" prefWidth="169.0" text="Nombre alumno" />
-                        <TableColumn fx:id="colIdCurso" prefWidth="108.0" text="id curso" />
-                        <TableColumn fx:id="colNombreCurso" prefWidth="120.0" text="nombre del curso" />
-                        <TableColumn fx:id="colFecha" prefWidth="144.0" text="Fecha Asignacion" />
+                      <TableColumn fx:id="colId" prefWidth="233.0" text="ID asignacion" />
+                      <TableColumn fx:id="colCarne" prefWidth="185.0" text="carne" />
+                        <TableColumn fx:id="colCursoId" prefWidth="183.0" text="id curso" />
+                        <TableColumn fx:id="colFechaAsignacion" prefWidth="187.0" text="Fecha Asignacion" />
                     </columns>
                   </TableView>
                   <ImageView fitHeight="69.0" fitWidth="320.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
@@ -142,7 +143,7 @@
                         <Image url="@../resources/image/fundacion-kinal-2048x739-removebg-preview%20(2).png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="47.0" fitWidth="54.0" layoutX="773.0" layoutY="28.0" onMouseClicked="#clicregresar" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="47.0" fitWidth="54.0" layoutX="773.0" layoutY="28.0" onMouseClicked="#clicRegresar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/image/image%20(13).png" />
                      </image>
@@ -180,10 +181,10 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField editable="false" GridPane.columnIndex="1" />
-                        <DatePicker prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ComboBox prefHeight="25.0" prefWidth="315.0" GridPane.columnIndex="4" />
-                        <ComboBox prefHeight="25.0" prefWidth="316.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtId" editable="false" GridPane.columnIndex="1" />
+                        <DatePicker fx:id="dpkFechaAsignacion" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="cmbAlumno" prefHeight="25.0" prefWidth="315.0" GridPane.columnIndex="4" />
+                        <ComboBox fx:id="cmbCurso" prefHeight="25.0" prefWidth="316.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

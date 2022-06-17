@@ -55,6 +55,10 @@ public class MenuPrincipalController implements Initializable {
     public void clicInstructores(ActionEvent event) {
         escenarioPrincipal.mostrarInstructores();
     }
+    @FXML
+    public void clicAsignaciones(ActionEvent event) {
+        escenarioPrincipal.mostrarAsignacion();
+    }
     
     
 }

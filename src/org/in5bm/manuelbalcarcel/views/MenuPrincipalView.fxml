@@ -195,7 +195,7 @@
                   <Image url="@../resources/image/Asignacion.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#clicSalones" prefHeight="101.0" prefWidth="262.0" styleClass="botones-menu" text="Asignacion Alumnos" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#clicAsignaciones" prefHeight="101.0" prefWidth="262.0" styleClass="botones-menu" text="Asignacion Alumnos" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
                </font>

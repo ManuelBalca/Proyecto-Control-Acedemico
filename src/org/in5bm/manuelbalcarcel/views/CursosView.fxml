@@ -209,10 +209,10 @@
                         <Spinner fx:id="spnCiclo" disable="true" editable="true" prefHeight="25.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Spinner fx:id="spnCupoMaximo" disable="true" editable="true" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Spinner fx:id="spnCupoMinimo" disable="true" editable="true" prefHeight="25.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ComboBox fx:id="cmbCarreraTecnica" disable="true" editable="true" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="cmbHorario" disable="true" editable="true" prefHeight="25.0" prefWidth="186.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <ComboBox fx:id="cmbInstructor" disable="true" editable="true" prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <ComboBox fx:id="cmbSalon" disable="true" editable="true" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="cmbCarreraTecnica" disable="true" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="cmbHorario" disable="true" prefHeight="25.0" prefWidth="186.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cmbInstructor" disable="true" prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <ComboBox fx:id="cmbSalon" disable="true" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>
